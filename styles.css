@@ -1,64 +1,92 @@
+.webpage{
+    display:flex;
+    height:100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+img{
+    width:50%;
+    margin-bottom:50px;
+}
+
+button{
+    margin-bottom:10px
+}
+
 .game {
     width: 600px;
     height: 200px;
-    border: 1px solid black;
+    border:none;
+    border-bottom: 1px solid rgb(77, 77, 77);
     margin: auto;
-}
-
-#dino {
-    width: 50px;
-    height: 50px;
-    background-image: url(images/trex.png);
-    background-size: 50px 50px;
+  }
+  
+  #dino {
+    width: 70px;
+    height: 70px;
+    background-image: url(img/pacard.png);
+    background-size: 70px 70px;
     position: relative;
     top: 150px;
-}
+  }
 
-.jump {
+  #bachelor {
+    width:200px;
+    height: 200px;
+    background-image: url(img/title.png);
+    position: fixed;
+    display:flex;
+    
+
+  }
+  
+  .jump {
     animation: jump 0.3s linear;
-}
-
-@keyframes jump {
+  }
+  
+  @keyframes jump {
     0% {
-        top: 150px;
+      top: 150px;
     }
-
+  
     30% {
-        top: 130px;
+      top: 130px;
     }
-
+  
     50% {
-        top: 80px;
+      top: 80px;
     }
-
+  
     80% {
-        top: 130px;
+      top: 130px;
     }
-
+  
     100% {
-        top: 150px;
+      top: 150px;
     }
-}
-
-#cactus {
+  }
+  
+  #cactus {
     width: 20px;
     height: 40px;
     position: relative;
     top: 110px;
     left: 580px;
-
-    background-image: url("images/cactus.png");
+  
+    background-image: url("img/cactus.png");
     background-size: 20px 40px;
-
+  
     animation: block 1s infinite linear;
-}
-
-@keyframes block {
+  }
+  
+  @keyframes block {
     0% {
-        left: 580px;
+      left: 580px;
     }
-
+  
     100% {
-        left: -20px;
+      left: -20px;
     }
-}
+  }
