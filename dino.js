@@ -21,7 +21,11 @@ export function setupDino() {
     yVelocity = 0
     setCustomProperty(dinoElem, "--bottom", 0)
     document.removeEventListener("keydown", onJump)
+    document.removeEventListener("click", onJump)
+
     document.addEventListener("keydown", onJump)
+    document.addEventListener("click", onJump)
+
 }
 
 export function updateDino(delta, speedScale) {
@@ -65,7 +69,7 @@ function handleJump(delta) {
 }
 
 function onJump(e) {
-    if (e.code !== "Space" || isJumping) return
+    if (e.code !== "Space" && e.code !=="Mouse" || isJumping) return
 
     yVelocity = JUMP_SPEED
     isJumping = true
