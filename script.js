@@ -19,6 +19,9 @@ let lastTime
 let speedScale
 let score
 function update(time) {
+  if (window.innerWidth<=1200){
+    alert("The game is not available on phone or tablet yet. Please play on your PC ;)")
+  }
   if (lastTime == null) {
     lastTime = time
     window.requestAnimationFrame(update)
@@ -43,12 +46,19 @@ function checkLose() {
 }
 
 function isCollision(rect1, rect2) {
-  return (
-    rect1.left < rect2.right*0.8 &&
-    rect1.top < rect2.bottom*0.8 &&
-    rect1.right > rect2.left*0.8 &&
-    rect1.bottom > rect2.top*0.8  
-  )
+  
+    if (window.innerWidth>1200){
+      return(
+        rect1.left < rect2.right*0.8  &&
+      rect1.top < rect2.bottom*0.8  &&
+      rect1.right > rect2.left*0.8  &&
+      rect1.bottom > rect2.top*0.8  
+      )
+      
+    }
+
+    
+  
 }
 
 function updateSpeedScale(delta) {
@@ -61,6 +71,9 @@ function updateScore(delta) {
 }
 
 function handleStart() {
+  if (window.innerWidth<=1200){
+    alert("The game is not available on phone or tablet yet. Please play on your PC ;)")
+  }
   pacard_song.play()
   lastTime = null
   speedScale = 1
