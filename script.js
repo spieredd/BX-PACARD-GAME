@@ -19,25 +19,35 @@ let lastTime
 let speedScale
 let score
 function update(time) {
-  if (window.innerWidth<=1200){
-    alert("The game is not available on phone or tablet yet. Please play on your PC ;)")
-  }
-  if (lastTime == null) {
+  if (window.innerWidth <= 1200) {
+    
+  } else {
+    if (lastTime == null) {
+      lastTime = time
+      window.requestAnimationFrame(update)
+      return
+    }
+    const delta = time - lastTime
+
+
+    updateScore(delta)
     lastTime = time
-    window.requestAnimationFrame(update)
-    return
+
+
+    updateGround(delta, speedScale)
+    updateDino(delta, speedScale)
+
+    updateCactus(delta, speedScale)
+    updateSpeedScale(delta)
+    if (checkLose()) return handleLose()
+
+
   }
-  const delta = time - lastTime
 
-  updateGround(delta, speedScale)
-  updateDino(delta, speedScale)
-  updateCactus(delta, speedScale)
-  updateSpeedScale(delta)
-  updateScore(delta)
-  if (checkLose()) return handleLose()
 
-  lastTime = time
   window.requestAnimationFrame(update)
+
+
 }
 
 function checkLose() {
@@ -46,19 +56,19 @@ function checkLose() {
 }
 
 function isCollision(rect1, rect2) {
-  
-    if (window.innerWidth>1200){
-      return(
-        rect1.left < rect2.right*0.8  &&
-      rect1.top < rect2.bottom*0.8  &&
-      rect1.right > rect2.left*0.8  &&
-      rect1.bottom > rect2.top*0.8  
-      )
-      
-    }
 
-    
-  
+  if (window.innerWidth > 1200) {
+    return (
+      rect1.left < rect2.right * 0.8 &&
+      rect1.top < rect2.bottom * 0.8 &&
+      rect1.right > rect2.left * 0.8 &&
+      rect1.bottom > rect2.top * 0.8
+    )
+
+  }
+
+
+
 }
 
 function updateSpeedScale(delta) {
@@ -68,10 +78,11 @@ function updateSpeedScale(delta) {
 function updateScore(delta) {
   score += delta * 0.01
   scoreElem.textContent = Math.floor(score)
+
 }
 
 function handleStart() {
-  if (window.innerWidth<=1200){
+  if (window.innerWidth <= 1200) {
     alert("The game is not available on phone or tablet yet. Please play on your PC ;)")
   }
   pacard_song.play()
